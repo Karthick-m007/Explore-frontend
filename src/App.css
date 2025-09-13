@@ -1,38 +1,30 @@
-.App {
-  text-align: center;
+.gradient{
+  background: #3F5EFB;
+    background: linear-gradient(52deg, rgba(63, 94, 251, 1) 0%, rgba(122, 79, 183, 1) 49%, rgba(252, 70, 107, 1) 100%);
+}
+html,
+body,
+#root {
+  height: 100%;
+  overflow-y: auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.gradient2 {
+  background: linear-gradient(232deg,
+      rgba(63, 94, 251, 1) 0%,
+      rgba(122, 79, 183, 1) 49%,
+      rgba(252, 70, 107, 1) 100%);
+}
+.box{
+box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.box-2{
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* .box-3{
+background: #3F5EFB;
+  background: linear-gradient(201deg, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+} */
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
