@@ -22,7 +22,7 @@ function App() {
       <Navbar isLoggedIn={isLoggedIn} setIsloggedin={setIsloggedin} />
       <Routes>
         <Route path='/' element={<Homepage isLoggedIn={isLoggedIn} />} />
-        <Route path='/dashboard' element={<Dashboard  isLoggedIn={isLoggedIn}/>} />
+        <Route path='/dashboard' element={<Dashboard isLoggedIn={isLoggedIn} setIsloggedin={setIsloggedin}/>} />
         <Route path='/create' element={<CreateAccount />} />
         <Route path='/addplace' element={isLoggedIn ? <AddPlace /> : <Navigate to="/login" replace />} />
         <Route path='/cardview/:id' element={<CardView />} />

@@ -156,18 +156,18 @@ else{
           <div
             id="toast-success"
             className="
-  fixed z-50 
-  right-5 
-  top-[4.5rem] sm:top-5 md:top-10 lg:top-28
-  w-[90vw] sm:max-w-xs md:max-w-sm lg:max-w-md
-  text-sm break-words 
-  flex items-center p-4 mb-4 
-  text-gray-700 bg-white rounded-lg shadow 
-  dark:text-gray-400 dark:bg-gray-800
-"
+      fixed z-50 
+      right-4 top-20 sm:right-5 sm:top-32 
+      w-[90vw] sm:max-w-xs md:max-w-sm lg:max-w-md 
+      flex items-start sm:items-center p-4 
+      text-sm text-gray-700 bg-white rounded-lg shadow 
+      dark:text-gray-200 dark:bg-gray-800 
+      space-x-3
+      transition-opacity duration-300 ease-in-out
+    "
           >
-
-            <div className="inline-flex items-center justify-center shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+            {/* Icon */}
+            <div className="flex-shrink-0 w-8 h-8 inline-flex items-center justify-center text-green-500 bg-green-100 rounded-lg dark:bg-green-700 dark:text-green-200">
               <svg
                 className="w-5 h-5"
                 aria-hidden="true"
@@ -178,13 +178,24 @@ else{
               </svg>
               <span className="sr-only">Check icon</span>
             </div>
-            <div className="ms-3 text-sm font-medium">Login successful!</div>
+
+            {/* Message */}
+            <div className="flex-1 text-sm font-medium break-words">
+              Login successful!
+            </div>
+
+            {/* Close Button */}
             <button
               onClick={() => setShowToast(false)}
-              className="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+              className="
+        ml-auto -mx-1.5 -my-1.5 
+        text-gray-400 hover:text-gray-900 
+        rounded-lg p-1.5 hover:bg-gray-100 
+        focus:ring-2 focus:ring-gray-300 
+        dark:text-gray-500 dark:hover:text-white dark:hover:bg-gray-700
+      "
               aria-label="Close"
             >
-              <span className="sr-only">Close</span>
               <svg className="w-3 h-3" fill="none" viewBox="0 0 14 14">
                 <path
                   stroke="currentColor"
@@ -194,9 +205,11 @@ else{
                   d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
                 />
               </svg>
+              <span className="sr-only">Close</span>
             </button>
           </div>
         )}
+
 
 
 

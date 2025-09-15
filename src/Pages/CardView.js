@@ -6,6 +6,7 @@ export default function CardView() {
   const [view, setView] = useState(null);
   const url = process.env.REACT_APP_BACKENDURL;
 
+
   useEffect(() => {
     fetch(`${url}get-place/${id}`, {
       method: "GET",
@@ -13,7 +14,9 @@ export default function CardView() {
     })
       .then(res => res.json())
       .then(data => {
+        console.log("fetch")
         if (data.success) {
+          console.log(data)
           setView(data.data);
         } else {
           console.error(data.message);
@@ -22,7 +25,7 @@ export default function CardView() {
       .catch(err => console.error("Error fetching place:", err));
   }, [url, id]);
 
-  
+
   if (!view) {
     return <div className="text-center mt-10">Loading...</div>;
   }

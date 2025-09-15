@@ -40,7 +40,7 @@ export default function Navbar({ isLoggedIn, setIsloggedin }) {
                     {/* Desktop Menu */}
                     <ul className="hidden md:flex space-x-6 font-medium">
                         <li className=" cursor-pointer transition" onClick={() => navigate('/')}>Home</li>
-                        <li className=" cursor-pointer transition" onClick={() => navigate('/dashboard')}>All Products</li>
+                        <li className=" cursor-pointer transition" onClick={() => navigate('/dashboard')}>All Places</li>
                         <li className=" cursor-pointer transition" onClick={() => navigate('/addplace')}>Add New Place</li>
                     </ul>
 
