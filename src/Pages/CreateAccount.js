@@ -1,195 +1,163 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function CreateAccount() {
-    const url = process.env.REACT_APP_BACKENDURL
-    const navigate = useNavigate()
+    const url = process.env.REACT_APP_BACKENDURL;
+    const navigate = useNavigate();
+
     const [newuser, setNewuser] = useState({
-        fullname: "",
-        email: "",
-        password: ""
-    })
+        fullname: '',
+        email: '',
+        password: ''
+    });
+
     const [error, setError] = useState({
-        fullname: "",
-        email: "",
-        password: ""
-    })
+        fullname: '',
+        email: '',
+        password: ''
+    });
 
     function handlesubmit(e) {
-        e.preventDefault()
+        e.preventDefault();
 
-        const errors = {
-            fullname: "",
-            email: "",
-            password: ""
-        }
+        const errors = { fullname: '', email: '', password: '' };
         let isValid = true;
 
-        const fullnamereg = /^[A-Za-z\s]*$/
-        const emailreg = /^[a-zA-Z0-9._%+-]+@gmail\.com$/
-        const passwordreg = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]+$/
+        const fullnamereg = /^[A-Za-z\s]*$/;
+        const emailreg = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+        const passwordreg = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]+$/;
 
-        if (newuser.fullname.trim() == "") {
-            errors.fullname = 'Full name is required'
-            isValid = false
-        }
-        else if (!fullnamereg.test(newuser.fullname.trim())) {
-            errors.fullname = 'Full name must be an letter'
-            isValid = false
-        }
-        if (newuser.email.trim() == "") {
-            errors.email = 'Email is required'
-            isValid = false
-        }
-        else if (!emailreg.test(newuser.email.trim())) {
-            errors.email = '@gmail.com is required'
-            isValid = false
-        }
-        if (newuser.password.trim() == "") {
-            errors.password = 'Password is required'
-            isValid = false
-        }
-        else if (!passwordreg.test(newuser.password.trim())) {
-            errors.password = `Password must contain 
-                at least one uppercase letter,one number,
-                and one special character`
-            isValid = false
-        }
-        setError(errors)
-        if (!isValid) {
-            return
+        if (newuser.fullname.trim() === '') {
+            errors.fullname = 'Full name is required';
+            isValid = false;
+        } else if (!fullnamereg.test(newuser.fullname.trim())) {
+            errors.fullname = 'Full name must be letters only';
+            isValid = false;
         }
 
-        // fetch
-        console.log(url)
+        if (newuser.email.trim() === '') {
+            errors.email = 'Email is required';
+            isValid = false;
+        } else if (!emailreg.test(newuser.email.trim())) {
+            errors.email = '@gmail.com is required';
+            isValid = false;
+        }
+
+        if (newuser.password.trim() === '') {
+            errors.password = 'Password is required';
+            isValid = false;
+        } else if (!passwordreg.test(newuser.password.trim())) {
+            errors.password = `Password must contain at least one uppercase letter, one number, and one special character`;
+            isValid = false;
+        }
+
+        setError(errors);
+        if (!isValid) return;
+
         fetch(`${url}create-user`, {
-            method: "POST",
+            method: 'POST',
             credentials: 'include',
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                fullname: newuser.fullname,
-                email: newuser.email,
-                password: newuser.password,
-            })
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newuser)
         })
-            .then((res) => res.json())
+            .then(res => res.json())
             .then(data => {
-                console.log(data)
-                if (data.success == true) {
-                    alert("account created successfull")
-                }
-                else{
-                    alert(data.message)
+                if (data.success === true) {
+                    alert('Account created successfully');
+                    navigate('/login');
+                } else {
+                    alert(data.message);
                 }
             })
-            .catch(err => console.log("error in the frontend create fetch", err))
+            .catch(err => console.log('Frontend fetch error:', err));
 
-        setNewuser({
-            fullname: "",
-            email: "",
-            password: ""
-        })
+        setNewuser({ fullname: '', email: '', password: '' });
     }
 
     function handlechange(e) {
-        const { name, value } = e.target
-        if (name === "fullname") {
-            const regex = /^[A-Za-z\s]*$/
-            if (!regex.test(value)) {
-                return;
-            }
+        const { name, value } = e.target;
+
+        if (name === 'fullname') {
+            const regex = /^[A-Za-z\s]*$/;
+            if (!regex.test(value)) return;
         }
 
-
-        setNewuser({
-            ...newuser,
-            [name]: value
-        })
-
-        setError({
-            ...error,
-            [name]: ""
-        })
+        setNewuser({ ...newuser, [name]: value });
+        setError({ ...error, [name]: '' });
     }
 
-
     return (
+        <div className="gradient min-h-screen flex items-center justify-center px-4 py-10">
+            <form
+                onSubmit={handlesubmit}
+                className="w-full max-w-md p-6 bg-white/30 backdrop-blur-md border border-white/40 rounded-lg shadow-lg space-y-5"
+            >
+                <div className="text-center">
+                    <h1 className="text-xl font-bold mb-2">Join Explore</h1>
+                    <p className="text-xs text-gray-700 dark:text-gray-300">
+                        Create your account and start discovering hidden places
+                    </p>
+                </div>
 
-        <div className='gradient'>
-            <div className='flex items-center min-h-screen py-10 mt-3'>
+                {/* Full Name */}
+                <div>
+                    <label htmlFor="fullname" className="block mb-1 text-sm font-medium">Full Name</label>
+                    <input
+                        type="text"
+                        name="fullname"
+                        value={newuser.fullname}
+                        onChange={handlechange}
+                        placeholder="e.g. John"
+                        className="w-full px-3 py-2 border rounded-md"
+                    />
+                    {error.fullname && <p className="text-red-600 text-xs mt-1">{error.fullname}</p>}
+                </div>
 
-                <form action="" className="backdrop-blur-md bg-white/30 border border-white/40 rounded-lg shadow-lg w-96 mx-auto flex flex-col justify-center items-center p-4 h-auto"
-                    onSubmit={handlesubmit}>
-                    <div>
-                        <h1 className='text-center text-xl my-3'>Join Explore</h1>
-                        <p className='text-center text-xs my-3 w-80'>Create your account and start discoverring hidden places</p>
-                    </div>
+                {/* Email */}
+                <div>
+                    <label htmlFor="email" className="block mb-1 text-sm font-medium">Email Address</label>
+                    <input
+                        type="email"
+                        name="email"
+                        value={newuser.email}
+                        onChange={handlechange}
+                        placeholder="e.g. John@gmail.com"
+                        className="w-full px-3 py-2 border rounded-md"
+                    />
+                    {error.email && <p className="text-red-600 text-xs mt-1">{error.email}</p>}
+                </div>
 
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>
+                {/* Password */}
+                <div>
+                    <label htmlFor="password" className="block mb-1 text-sm font-medium">Password</label>
+                    <input
+                        type="password"
+                        name="password"
+                        value={newuser.password}
+                        onChange={handlechange}
+                        className="w-full px-3 py-2 border rounded-md"
+                    />
+                    {error.password && (
+                        <p className="text-red-600 text-xs mt-1 whitespace-pre-line">{error.password}</p>
+                    )}
+                </div>
 
-                                    <label for="fullname" className='mt-3 mb-1'>Full Name</label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-
-                                    <input type="text"
-                                        name='fullname'
-                                        value={newuser.fullname}
-                                        onChange={handlechange}
-                                        placeholder='example: John'
-                                        className='border rounded px-2 py-1 w-64' />
-                                    {error.fullname && (<p className="text-red-600 text-xs  mt-2">{error.fullname}</p>)}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-
-                                    <label for="email" className='mt-3 mb-1'>Email Address</label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-
-                                    <input type="email"
-                                        name='email'
-                                        value={newuser.email}
-                                        onChange={handlechange}
-                                        placeholder='example: John@gmail.com'
-                                        className='border rounded px-2 py-1  w-64' />
-                                    {error.email && (<p className="text-red-600 text-xs mt-2">{error.email}</p>)}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-
-                                    <label for="password" className='mt-3 mb-1'>Password</label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-
-                                    <input type="password"
-                                        name='password'
-                                        value={newuser.password}
-                                        onChange={handlechange}
-                                        className='border rounded px-2 py-1 w-64' />
-                                    {error.password && (<p className="text-red-600 text-xs mt-2" style={{ whiteSpace: 'pre-line' }}>{error.password}</p>)}
-                                </td>
-                            </tr>
-
-                        </tbody>
-                        <div className='mt-4 flex flex-col justify-center items-center'>
-                            <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">Create Account</button>
-                            <a className='text-xs mt-2'>Already have an account? <span className='text-sm text-blue-800 cursor-pointer' onClick={() => navigate('/login')}>Sign in</span></a>
-                        </div>
-
-                    </table>
-                </form>
-            </div>
+                {/* Submit */}
+                <div className="flex flex-col items-center space-y-2 pt-2">
+                    <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md">
+                        Create Account
+                    </button>
+                    <p className="text-xs">
+                        Already have an account?{' '}
+                        <span
+                            className="text-blue-800 font-medium cursor-pointer"
+                            onClick={() => navigate('/login')}
+                        >
+                            Sign in
+                        </span>
+                    </p>
+                </div>
+            </form>
         </div>
-    )
+    );
 }
