@@ -6,13 +6,25 @@ import Homepage from './Pages/Homepage';
 import AddPlace from './Pages/AddPlace';
 import CardView from './Pages/CardView';
 import Login from './Pages/Login';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Dashboard from './Pages/Dashboard';
 import Footer from './Components/Footer';
 
 
 function App() {
   const [isLoggedIn, setIsloggedin] = useState(false)
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_BACKENDURL}check-login`, {
+      credentials: 'include',
+    })
+      .then(res => res.json())
+      .then(data => {
+        setIsloggedin(data.loggedIn);
+      })
+      .catch(() => {
+        setIsloggedin(false);
+      });
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen">
