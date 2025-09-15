@@ -20,7 +20,7 @@ function App() {
       .then(res => res.json())
       .then(data => {
         setIsloggedin(data.loggedIn);
-      })
+      })  
       .catch(() => {
         setIsloggedin(false);
       });

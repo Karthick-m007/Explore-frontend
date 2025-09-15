@@ -54,10 +54,6 @@ export default function AddPlace() {
         }
     }
 
-
-
-
-
     function handlesubmit(e) {
         e.preventDefault()
 
