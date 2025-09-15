@@ -143,6 +143,7 @@ setPlace({
     description: "",
     detailinfo: "",
 })
+setPreviewUrl(null);
     }
 
 
