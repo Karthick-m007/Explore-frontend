@@ -55,7 +55,7 @@ export default function Login({ setIsloggedin }) {
           setTimeout(() => {
             setIsloggedin(true);
             navigate('/dashboard');
-          }, 1000);
+          }, 2000);
         } else {
           alert("Invalid user or invalid email or password");
         }

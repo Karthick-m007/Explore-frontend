@@ -18,19 +18,19 @@ export default function Homepage({ isLoggedIn }) {
     const url = process.env.REACT_APP_BACKENDURL
 
     useEffect(() => {
-       setTimeout(() => {
-           fetch(`${url}get-place`, {
-               method: 'GET',
+        setTimeout(() => {
+            fetch(`${url}get-place`, {
+                method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
-               credentials: 'include',
-           })
-               .then(res => res.json())
-               .then(data => {
-                   console.log(data)
-                   setDashboard(data.product)
-               })
-               .catch(err => console.error("Error fetching places:", err))
-       }, 3000);
+                credentials: 'include',
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    setDashboard(data.product)
+                })
+                .catch(err => console.error("Error fetching places:", err))
+        }, 3000);
     }, [url])
 
     return (
@@ -254,8 +254,8 @@ h78.747C231.693,100.736,232.77,106.162,232.77,111.694z"
                                         alt={d.placename}
                                     />
                                     <div className="p-4 flex flex-col justify-between flex-1">
-                                        <h5 className="font-semibold text-lg mb-2">{d.placename}</h5>
-                                        <p className="text-sm text-gray-600 line-clamp-3 w-56">{d.description}</p>
+                                        <h5 className="text-lg mb-2 text-black font-bold">{d.placename}</h5>
+                                        <p className="text-sm text-black line-clamp-3 w-56">{d.description}</p>
                                         <button
                                             onClick={() => {
                                                 if (isLoggedIn) {
@@ -301,7 +301,7 @@ h78.747C231.693,100.736,232.77,106.162,232.77,111.694z"
 
                 <div className='flex flex-col items-center border rounded-3 py-3 ps-2 w-[85%] md:w-[50%] bg-white'>
                     <button className='border bg-violet-500 py-3 px-4 flex items-center text-white font-bold rounded-full hover:bg-violet-600 ' onClick={() => navigate('/login')} >Join Our Community  <FaArrowRightLong className='ms-3 text-xl' />
-</button>
+                    </button>
                     <p className='py-4 text-center'>Bu Signing up, Your agree to our Terms and Conditions</p>
                 </div>
             </div>
