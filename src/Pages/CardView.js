@@ -10,6 +10,7 @@ export default function CardView() {
   useEffect(() => {
     fetch(`${url}get-place/${id}`, {
       method: "GET",
+      headers:{"Content-Type":"application/json"},
       credentials: "include"
     })
       .then(res => res.json())

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Login({ setIsloggedin }) {
   const url = process.env.REACT_APP_BACKENDURL;
+  console.log(url)
   const navigate = useNavigate();
 
   const [login, setLogin] = useState({ email: "", password: "" });
@@ -43,11 +44,12 @@ export default function Login({ setIsloggedin }) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
-      body: JSON.stringify(login)
+      body: JSON.stringify({ email: login.email, password: login.password })
     })
       .then(res => res.json())
       .then(data => {
         if (data.success === true) {
+          console.log("Login", data)
           setShowToast(true);
           setTimeout(() => setShowToast(false), 5000);
           setTimeout(() => {

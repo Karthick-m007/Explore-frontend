@@ -21,6 +21,7 @@ export default function Homepage({ isLoggedIn }) {
        setTimeout(() => {
            fetch(`${url}get-place`, {
                method: 'GET',
+                headers: { 'Content-Type': 'application/json' },
                credentials: 'include',
            })
                .then(res => res.json())

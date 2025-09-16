@@ -63,7 +63,7 @@ export default function Navbar({ isLoggedIn, setIsloggedin }) {
                                 </button>
                                 <button
                                     onClick={() => navigate('/create')}
-                                    className="bg-rose-400 px-4 py-2 rounded hover:bg-gray-800 transition"
+                                    className="bg-rose-400 px-4 py-2 rounded hover:bg-rose-800 transition"
                                 >
                                     Sign Up
                                 </button>
