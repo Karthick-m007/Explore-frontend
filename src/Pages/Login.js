@@ -49,21 +49,36 @@ export default function Login({ setIsloggedin }) {
       .then(res => res.json())
       .then(data => {
         if (data.success === true) {
-          console.log("Login", data)
+          console.log("Login", data);
           setShowToast(true);
           setTimeout(() => setShowToast(false), 5000);
-          setTimeout(() => {
-            setIsloggedin(true);
-            navigate('/dashboard');
-          }, 1000);
+
+          // ✅ Re-check session status before navigating
+          fetch(`${url}check-login`, {
+            credentials: 'include',
+          })
+            .then(res => res.json())
+            .then(statusData => {
+              if (statusData.loggedIn) {
+                setIsloggedin(true);
+                navigate('/dashboard');
+              } else {
+                alert("Login session not established. Please try again.");
+              }
+            })
+            .catch(() => {
+              alert("Failed to verify login status.");
+            });
+
         } else {
           alert("Invalid user or invalid email or password");
         }
       })
       .catch(err => console.log("error in the frontend login fetch", err));
 
-    setLogin({ email: "", password: "" });
+    setLogin({ email: "", password: "" }); // ✅ Move this down
   }
+
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 gradient">

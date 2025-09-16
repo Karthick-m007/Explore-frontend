@@ -120,7 +120,7 @@ export default function AddPlace() {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                if (data.success == true) {
+                if (data.success === true) {
                     alert("successfull added ")
                     navigate('/dashboard')
                     
