@@ -28,7 +28,7 @@ export default function CardView() {
 
 
   if (!view) {
-    return <div className="text-center mt-10">
+    return <div className="flex justify-center items-center mt-10">
       <div className="flex justify-content-center my-10 font-medium">
         <div class="loader">
           <div class="truckWrapper">
