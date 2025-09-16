@@ -175,8 +175,8 @@ h78.747C231.693,100.736,232.77,106.162,232.77,111.694z"
                                 alt={d.placename}
                             />
                             <div className="p-4">
-                                <h5 className="font-semibold text-lg mb-2 text-gray-800 dark:text-white">{d.placename}</h5>
-                                <p className="text-sm text-black dark:text-gray-300 line-clamp-3">
+                                <h5 className="font-semibold text-lg mb-2 text-gray-800e">{d.placename}</h5>
+                                <p className="text-sm text-black  line-clamp-3">
                                     {d.description}
                                 </p>
                                 <div className="flex justify-center mt-4">

@@ -170,11 +170,11 @@ h78.747C231.693,100.736,232.77,106.162,232.77,111.694z"
         alt={view.placename}
       />
       <div className="p-5">
-        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{view.placename}</h5>
-        <h3 className="mb-1 font-medium text-black dark:text-gray-300">Rating: {view.rating}</h3>
-        <h3 className="mb-3 font-normal text-black dark:text-gray-400">Location: {view.location}</h3>
-        <p className="mb-3 font-normal text-black dark:text-gray-400">{view.description}</p>
-        <p className="text-sm text-black dark:text-gray-400">{view.detailinfo}</p>
+        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">{view.placename}</h5>
+        <h3 className="mb-1 font-medium text-black ">Rating: {view.rating}</h3>
+        <h3 className="mb-3 font-normal text-black ">Location: {view.location}</h3>
+        <p className="mb-3 font-normal text-black ">{view.description}</p>
+        <p className="text-sm text-black ">{view.detailinfo}</p>
       </div>
     </div>
   );
