@@ -57,13 +57,13 @@ export default function Navbar({ isLoggedIn, setIsloggedin }) {
                             <>
                                 <button
                                     onClick={() => navigate('/login')}
-                                    className="bg-green-600 px-4 py-2 rounded hover:bg-green-700 transition"
+                                    className="bg-green-600 px-4 py-2 rounded hover:bg-green-500 transition"
                                 >
                                     Login
                                 </button>
                                 <button
                                     onClick={() => navigate('/create')}
-                                    className="bg-rose-400 px-4 py-2 rounded hover:bg-rose-800 transition"
+                                    className="bg-rose-600 px-4 py-2 rounded hover:bg-rose-500 transition"
                                 >
                                     Sign Up
                                 </button>
@@ -85,7 +85,7 @@ export default function Navbar({ isLoggedIn, setIsloggedin }) {
                             {isLoggedIn ? (
                                 <button
                                     onClick={() => { handleLogout(); setMenuOpen(false); }}
-                                    className="bg-red-600 w-full px-4 py-2 rounded hover:bg-red-700 transition"
+                                    className="bg-red-600 w-full px-4 py-2 rounded hover:bg-red-500 transition"
                                 >
                                     Logout
                                 </button>
@@ -93,13 +93,13 @@ export default function Navbar({ isLoggedIn, setIsloggedin }) {
                                 <>
                                     <button
                                         onClick={() => { navigate('/login'); setMenuOpen(false); }}
-                                        className="bg-green-600 w-full px-4 py-2 rounded hover:bg-green-700 transition mb-2"
+                                        className="bg-green-600 w-full px-4 py-2 rounded hover:bg-green-500 transition mb-2"
                                     >
                                         Login
                                     </button>
                                     <button
                                         onClick={() => { navigate('/create'); setMenuOpen(false); }}
-                                        className="bg-rose-400 w-full px-4 py-2 rounded hover:bg-gray-800 transition"
+                                        className="bg-rose-600 w-full px-4 py-2 rounded hover:bg-rose-500 transition"
                                     >
                                         Sign Up
                                     </button>
