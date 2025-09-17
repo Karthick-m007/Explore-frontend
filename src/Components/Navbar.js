@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { HiMenu, HiX } from 'react-icons/hi'; // Menu icons
 
+import image from "../images/destination (1).png"
+
 export default function Navbar({ isLoggedIn, setIsloggedin }) {
     const navigate = useNavigate();
     const url = process.env.REACT_APP_BACKENDURL;
@@ -26,8 +28,8 @@ export default function Navbar({ isLoggedIn, setIsloggedin }) {
         <div>
             <nav className="bg-blue-100 border-b border-blue-200 text-gray-800 p-4 fixed w-[100%] top-0 z-[9999] shadow-sm">
                 <div className="max-w-7xl mx-auto flex items-center justify-between px-4">
-                    <h1 className="text-xl font-bold cursor-pointer" onClick={() => navigate('/')}>
-                        Explore
+                    <h1 className="text-xl font-bold cursor-pointer flex justify-center items-center" onClick={() => navigate('/')}>
+                       <img src={image} className='w-5 h-5 me-2' alt=""/> Explore
                     </h1>
 
                     {/* Hamburger Icon (Mobile Only) */}

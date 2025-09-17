@@ -52,7 +52,8 @@ export default function CreateAccount() {
         }
 
         setError(errors);
-        if (!isValid) return;
+        if (!isValid) 
+            return;
 
         fetch(`${url}create-user`, {
             method: 'POST',
@@ -79,7 +80,8 @@ export default function CreateAccount() {
 
         if (name === 'fullname') {
             const regex = /^[A-Za-z\s]*$/;
-            if (!regex.test(value)) return;
+            if (!regex.test(value)) 
+                return;
         }
 
         setNewuser({ ...newuser, [name]: value });
